@@ -1,0 +1,27 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "Generates a team profile and renders as HTML",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RflctnOfU/TeamProfileGenerator.git"
+  },
+  "author": "Kris Marshall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RflctnOfU/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/RflctnOfU/TeamProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.3"
+  }
+}
