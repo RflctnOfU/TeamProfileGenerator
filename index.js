@@ -140,7 +140,7 @@ function init() {
                 },
                 {
                     type: 'input',
-                    name: 'employeeId',
+                    name: 'id',
                     message: 'Please enter the employee id.'
                 },
                 {
@@ -168,7 +168,11 @@ function init() {
     // function for BUIDING THE TEAM //////////////////
     function buildTeam() {
         // creating the file, adding your team to it
-        console.log(teamMembers[0]);
+        // function writeToFile(fileName, data) {
+        fs.writeFile('./dist/index.html', generateHtml(teamMembers), (err) => err ? console.error(err) : console.log(teamMembers));
+        // generateHtml(teamMembers);
+        // }
+        // writeToFile('index.html', generateHtml(teamMembers));
         // generate = generateHtml()
         // fs.writeFile('index.html', generate, (err) => err ? console.error(err) : console.log('index.html has been successfully created!'));
         // probably call a function, passing in your team members array - send it to another js file 

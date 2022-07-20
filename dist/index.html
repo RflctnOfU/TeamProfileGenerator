@@ -1,10 +1,4 @@
-function generateCards(teamInfo) {
-    const a = teamInfo[0].name;
-    console.log(a);
-}
-
-function generateHtml(data) {
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,16 +13,10 @@ function generateHtml(data) {
         <h1 class="text-center">My Team</h1>
     </header>
     <main>
-        ${data}
+        [object Object],[object Object],[object Object]
     </main>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
-</html>`;
-
-}
-
-module.exports = generateHtml;
-
-// generateCards();
+</html>
