@@ -4,6 +4,17 @@ function generateCards(teamInfo) {
 }
 
 function generateHtml(data) {
+    const dataH = data.map(member => {
+        if (member.getRole() === 'Manager') {
+            return member.getOffice();
+        } else if (member.getRole() === 'Engineer') {
+            return member.getGithub()
+        } else if (member.getRole() === 'Intern') {
+            return member.getSchool()
+        }
+    })
+    console.log(dataH);
+
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +30,7 @@ function generateHtml(data) {
         <h1 class="text-center">My Team</h1>
     </header>
     <main>
-        ${data}
+        ${dataH}
     </main>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
