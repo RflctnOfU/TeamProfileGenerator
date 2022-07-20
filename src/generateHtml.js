@@ -17,7 +17,7 @@ function generateHtml(data) {
         <h1 class="text-center">My Team</h1>
     </header>
     <main>
-        
+        .
     </main>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

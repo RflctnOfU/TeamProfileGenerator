@@ -59,7 +59,7 @@ function init() {
                 // then you will need to push this new manager to the empty team array you set up above
                 teamMembers.push(manager);
                 // and call the function for DETERMINING TYPE OF EMPLOYEE - we'll call it createTeam
-                console.log(teamMembers)
+                // console.log(teamMembers)
                 createTeam();
             })
     }
@@ -121,7 +121,7 @@ function init() {
             .then((answers) => {
                 const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
                 teamMembers.push(engineer);
-                console.log(teamMembers);
+                // console.log(teamMembers);
                 createTeam();
             })
 
@@ -157,7 +157,7 @@ function init() {
             .then((answers) => {
                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
                 teamMembers.push(intern);
-                console.log(teamMembers);
+                // console.log(teamMembers);
                 createTeam();
             })
 
@@ -168,7 +168,9 @@ function init() {
     // function for BUIDING THE TEAM //////////////////
     function buildTeam() {
         // creating the file, adding your team to it
-        fs.writeFile('index.html', generateHtml(teamMembers), (err) => err ? console.error(err) : console.log('index.html has been successfully created!'));
+        console.log(teamMembers[0]);
+        // generate = generateHtml()
+        // fs.writeFile('index.html', generate, (err) => err ? console.error(err) : console.log('index.html has been successfully created!'));
         // probably call a function, passing in your team members array - send it to another js file 
     }
 
@@ -178,3 +180,4 @@ function init() {
 }
 
 init();
+// generateHtml();
