@@ -1,19 +1,56 @@
 function generateCards(teamInfo) {
-    const a = teamInfo[0].name;
-    console.log(a);
+    const roles = teamInfo.map(member => {
+        return member.getRole();
+    })
+    const name = teamInfo.map(member => {
+        return member.name;
+    })
+    const id = teamInfo.map(member => {
+        return member.id;
+    })
+    const email = teamInfo.map(member => {
+        return member.email;
+    })
+    const offGitSch = teamInfo.map(member => {
+        if (member.getRole() === 'Manager') {
+            return `Office Number: ${member.getOffice()}`
+        } else if (member.getRole() === 'Engineer') {
+            return `GitHub: <a href="https://github.com/${member.getGithub()} target="_blank">${member.getGithub()}</a>`
+        } else if (member.getRole() === 'Intern') {
+            return `School: ${member.getSchool()}`
+        }
+    })
+
+    const getIcon = teamInfo.map(member => {
+        if (member.getRole() === 'Manager') {
+            return '<i class="fa-solid fa-mug-hot fa-xl mr-3"></i>';
+        } else if (member.getRole() === 'Engineer') {
+            return '<i class="fa-solid fa-glasses fa-xl mr-3"></i>';
+        } else if (member.getRole() === 'Intern') {
+            return '<i class="fa-solid fa-user-graduate fa-xl mr-3"></i>';
+        }
+    })
+
+    for (let i = 0; i < teamInfo.length; i++) {
+        `<div class="col-3">
+        <div class="card shadow">
+            <div class="card-body bg-primary text-white rounded-lg">
+              <h2 class="card-title">${name[i]}</h5>
+                ${getIcon[i]}<h4 class="card-text d-inline-flex">${roles[i]}</h4>
+            </div>
+            <ul class="list-group bg-light">
+              <li class="shadow-sm border list-group-item mt-4 mb-1 ml-4 mr-4">ID: ${id[i]} </li>
+              <li class="shadow-sm border list-group-item mt-1 mb-1 ml-4 mr-4">email: <a href="mailto:${email[i]}">${email[i]}</a></li>
+              <li class="shadow-sm border list-group-item mt-1 mb-4 ml-4 mr-4">${offGitSch[i]}</li>
+            </ul>
+          </div>
+    </div>`
+    }
+
 }
 
 function generateHtml(data) {
-    const dataH = data.map(member => {
-        if (member.getRole() === 'Manager') {
-            return member.getOffice();
-        } else if (member.getRole() === 'Engineer') {
-            return member.getGithub()
-        } else if (member.getRole() === 'Intern') {
-            return member.getSchool()
-        }
-    })
-    console.log(dataH);
+
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -30,7 +67,11 @@ function generateHtml(data) {
         <h1 class="text-center">My Team</h1>
     </header>
     <main>
-        ${dataH}
+        <div class="container">
+            <div class="row d-flex justify-content-around">
+                ${generateCards(data)}
+            </div>
+        </div>
     </main>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
