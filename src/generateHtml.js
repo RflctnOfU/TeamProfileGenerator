@@ -28,8 +28,9 @@ function generateCards(teamInfo) {
     // })
     // console.log(teamInfo);
     const createManager = (manager) => {
-        return `<div class="col-3">
-            <div class="card shadow">
+        // console.log(manager);
+        return `<div class="col-4">
+            <div class="card shadow m-2">
                 <div class="card-body bg-primary text-white rounded-lg">
                   <h2 class="card-title">${manager.getName()}</h5>
                   <i class="fa-solid fa-mug-hot fa-xl mr-3"></i><h4 class="card-text d-inline-flex">${manager.getRole()}</h4>
@@ -43,8 +44,9 @@ function generateCards(teamInfo) {
         </div>`;
     }
     const createEngineer = (engineer) => {
-        return `<div class="col-3">
-            <div class="card shadow">
+
+        return `<div class="col-4">
+            <div class="card shadow m-2">
                 <div class="card-body bg-primary text-white rounded-lg">
                   <h2 class="card-title">${engineer.getName()}</h5>
                   <i class="fa-solid fa-glasses fa-xl mr-3"></i><h4 class="card-text d-inline-flex">${engineer.getRole()}</h4>
@@ -58,8 +60,9 @@ function generateCards(teamInfo) {
         </div>`;
     }
     const createIntern = (intern) => {
-        return `<div class="col-3">
-            <div class="card shadow">
+        console.log(intern);
+        return `<div class="col-4">
+            <div class="card shadow m-2">
                 <div class="card-body bg-primary text-white rounded-lg">
                   <h2 class="card-title">${intern.getName()}</h5>
                   <i class="fa-solid fa-user-graduate fa-xl mr-3"></i><h4 class="card-text d-inline-flex">${intern.getRole()}</h4>
@@ -73,18 +76,23 @@ function generateCards(teamInfo) {
         </div>`;
     }
 
+    const html = []
+
     for (const element of teamInfo) {
+        // console.log(element.getRole());
         if (element.getRole() === 'Manager') {
-            console.log('Manager');
-            createManager(element);
+            // console.log(element);
+            html.push(createManager(element));
         } else if (element.getRole() === 'Engineer') {
-            console.log('Engineer');
-            createEngineer(element);
+            // console.log('Engineer');
+            html.push(createEngineer(element));
         } else if (element.getRole() === 'Intern') {
-            console.log('Intern');
-            createIntern(element);
+            // console.log('Intern');
+            html.push(createIntern(element));
         }
     }
+
+    return html.join('');
     // for (let i = 0; i < teamInfo.length; i++) {
     //     if (teamInfo.map(member => {
     //         member.getRole()
@@ -107,7 +115,7 @@ function generateCards(teamInfo) {
 }
 
 function generateHtml(data) {
-
+    // console.log(data);
 
     return `<!DOCTYPE html>
 <html lang="en">
