@@ -1,34 +1,6 @@
-function generateCards(teamInfo) {
-    // const arr = [];
+function generateCards(teamInfo) { // creates the cards for display on the rendered html page based on user input
 
-    // const roles = teamInfo.map(member => {
-    //     arr.push(member.getRole());
-
-    // })
-    // const name = teamInfo.map(member => {
-    //     arr.push(member.getName());
-    // })
-    // const id = teamInfo.map(member => {
-    //     arr.push(member.getId());
-    // })
-    // const email = teamInfo.map(member => {
-    //     arr.push(member.getEmail());
-    // })
-    // const offGitSch = teamInfo.map(member => {
-    //     if (member.getRole() === 'Manager') {
-    //         // return `Office Number: ${member.getOffice()}`
-    //         arr.push(getOffice());
-    //     } else if (member.getRole() === 'Engineer') {
-    //         arr.push(member.getGithub());
-    //         // return `GitHub: <a href="https://github.com/${member.getGithub()} target="_blank">${member.getGithub()}</a>`
-    //     } else if (member.getRole() === 'Intern') {
-    //         arr.push(member.getSchool());
-    //         // return `School: ${member.getSchool()}`
-    //     }
-    // })
-    // console.log(teamInfo);
     const createManager = (manager) => {
-        // console.log(manager);
         return `<div class="col-4">
             <div class="card shadow m-2">
                 <div class="card-body bg-primary text-white rounded-lg">
@@ -75,48 +47,29 @@ function generateCards(teamInfo) {
               </div>
         </div>`;
     }
-
+    //array of rendered cards
     const html = []
-
+    //conditional for card creation
     for (const element of teamInfo) {
-        // console.log(element.getRole());
+
         if (element.getRole() === 'Manager') {
-            // console.log(element);
+
             html.push(createManager(element));
+
         } else if (element.getRole() === 'Engineer') {
-            // console.log('Engineer');
+
             html.push(createEngineer(element));
+
         } else if (element.getRole() === 'Intern') {
-            // console.log('Intern');
+
             html.push(createIntern(element));
         }
     }
 
     return html.join('');
-    // for (let i = 0; i < teamInfo.length; i++) {
-    //     if (teamInfo.map(member => {
-    //         member.getRole()
-    //     }) === 'Manager') {
-    //         console.log("Manager");
-    //         // createManager(teamInfo);
-    //     } else if (teamInfo.map(member => {
-    //         member.getRole()
-    //     }) === 'Engineer') {
-    //         console.log("Engineer");
-    //         // createEngineer(teamInfo);
-    //     } else if (teamInfo.map(member => {
-    //         member.getRole()
-    //     }) === 'Intern') {
-    //         console.log("Intern");
-    //         // createIntern(teamInfo);
-    //     }
-    // }
-
 }
 
 function generateHtml(data) {
-    // console.log(data);
-
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,4 +101,3 @@ function generateHtml(data) {
 
 module.exports = generateHtml;
 
-// generateCards();

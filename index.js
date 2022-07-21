@@ -7,20 +7,13 @@ const Intern = require('./lib/Intern')
 const Employee = require('./lib/Employee')
 const generateHtml = require('./src/generateHtml')
 
-// require all of your classes/constructors, (Manager, Engineer, Intern)
-// require packages needed (inquirer, path, fs)
-
-// set up an empty array for the Team Members
+// Array to push team member data
 const teamMembers = [];
-// set up functions for iniitalizing the app, creating a manager, determining which type of employee the user wants to add, adding each member type, and building the team
-
-// function for INITIALIZING ////////////////
+// initializing function on app loading
 function init() {
-    // first thing you'll probably want to do is add a function for creating a manager, since that's the first thing you have to do
-    // function for CREATING A MANAGER ///////////////
+
     function createManager() {
-        // use inquirer
-        // and prompt to ask questions
+        // getting information about manager
         inquirer
             .prompt([
                 {
@@ -44,29 +37,17 @@ function init() {
                     message: "Please enter the office number."
                 }
             ])
-            // once you finish your questions, you'll probably want to send those answers to a new instance of Manager (one of the classes you'll create and require above)
             .then((answers) => {
-                // let name = answers.name
-                // let id = answers.id
-                // let email = answers.email
-                // let office = answers.office
-
+                // taking answers and creating a new instance of manager from the manager class
                 const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
-
-                //send your answers here
-
-                // then you will need to push this new manager to the empty team array you set up above
+                // push new manager to team array
                 teamMembers.push(manager);
-                // and call the function for DETERMINING TYPE OF EMPLOYEE - we'll call it createTeam
-                // console.log(teamMembers)
+                // go to create team function
                 createTeam();
             })
     }
-
-    // function for DETERMINING TYPE OF EMPLOYEE //////////////////
+    //choose type of employee to add
     function createTeam() {
-        // use inquirer
-        // and prompt to ask questions - such as what type of employee they would like to add
         inquirer
             .prompt([
                 {
@@ -76,23 +57,26 @@ function init() {
                     choices: ['Engineer', 'Intern', 'Finish']
                 }
             ])
-            // then, based on their choice, run the function associated with adding that employee type
+
             .then((answers) => {
-                // conditional that runs function for employee type that the user selected
+                // conditional that goes to employee type function
                 if (answers.type === 'Engineer') {
+
                     addEngineer();
-                    // console.log(answers.type);
+
                 } else if (answers.type === 'Intern') {
+
                     addIntern();
-                    // console.log(answers.type);
+
                 } else if (answers.type === 'Finish') {
+
                     buildTeam();
+
                 }
-                // if they choose Intern, run addIntern function
-                // if they no longer want to add members, you'll need to run the function that actually builds the team (creates the file, etc)
+
             })
     }
-
+    //engineer data function
     function addEngineer() {
         inquirer
             .prompt([
@@ -118,18 +102,17 @@ function init() {
                 }
             ])
             .then((answers) => {
+                // create new instance of engineer
                 const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+                //push data to team array
                 teamMembers.push(engineer);
-                // console.log(teamMembers);
+                //go back to employee type selection
                 createTeam();
             })
 
     }
-    // function for ADDING A MEMBER /////////////////
-    // a seperate function for each member type
+    //intern data function
     function addIntern() {
-        // use inquirer
-        // and prompt to ask questions
         inquirer
             .prompt([
                 {
@@ -154,33 +137,20 @@ function init() {
                 }
             ])
             .then((answers) => {
+                //create new instance of intern
                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
                 teamMembers.push(intern);
-                // console.log(teamMembers);
+                //go back to employee type selection
                 createTeam();
             })
-
-        // take the answers, create a new instance of Intern, and add those answers to that new Intern
-        // push this new member into you team array
     }
 
-    // function for BUIDING THE TEAM //////////////////
+    //creates html file and calls the render function passing in team array data
     function buildTeam() {
-        // creating the file, adding your team to it
-        // function writeToFile(fileName, data) {
-        fs.writeFile('./dist/index.html', generateHtml(teamMembers), (err) => err ? console.error(err) : console.log(teamMembers));
-        // generateHtml(teamMembers);
-        // }
-        // writeToFile('index.html', generateHtml(teamMembers));
-        // generate = generateHtml()
-        // fs.writeFile('index.html', generate, (err) => err ? console.error(err) : console.log('index.html has been successfully created!'));
-        // probably call a function, passing in your team members array - send it to another js file 
+        fs.writeFile('./dist/index.html', generateHtml(teamMembers), (err) => err ? console.error(err) : console.log('You have successfully created your roster!'));
     }
-
-    // last thing you'll want to do inside of this initializing function is call your function for creating a manager, so that it's the first question the user is asked
-
+    //starts the inquiry about team members
     createManager();
 }
-
+// calls the initialization function
 init();
-// generateHtml();
