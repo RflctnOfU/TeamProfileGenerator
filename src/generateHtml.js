@@ -132,8 +132,8 @@ function generateHtml(data) {
         <h1 class="text-center">My Team</h1>
     </header>
     <main>
-        <div class="container">
-            <div class="row d-flex justify-content-around">
+        <div class="container" style="width: 65%">
+            <div class="row d-flex justify-content-center">
                 ${generateCards(data)}
             </div>
         </div>
