@@ -16,7 +16,6 @@ function generateCards(teamInfo) { // creates the cards for display on the rende
         </div>`;
     }
     const createEngineer = (engineer) => {
-
         return `<div class="col-4">
             <div class="card shadow m-2">
                 <div class="card-body bg-primary text-white rounded-lg">
@@ -32,7 +31,6 @@ function generateCards(teamInfo) { // creates the cards for display on the rende
         </div>`;
     }
     const createIntern = (intern) => {
-        console.log(intern);
         return `<div class="col-4">
             <div class="card shadow m-2">
                 <div class="card-body bg-primary text-white rounded-lg">
