@@ -1,6 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)     
   # Team Profile Generator
 
+  ![Screenshot](./img/Screen%20Shot%202022-07-20%20at%2011.27.03%20PM.png)
   ---
   ## Description
 
